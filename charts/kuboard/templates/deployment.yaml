@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuboard
+  namespace: kube-system
+  annotations:
+    k8s.kuboard.cn/displayName: kuboard
+    k8s.kuboard.cn/ingress: "true"
+    k8s.kuboard.cn/service: NodePort
+    k8s.kuboard.cn/workload: kuboard
+  labels:
+    k8s.kuboard.cn/layer: monitor
+    k8s.kuboard.cn/name: kuboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s.kuboard.cn/layer: monitor
+      k8s.kuboard.cn/name: kuboard
+  template:
+    metadata:
+      labels:
+        k8s.kuboard.cn/layer: monitor
+        k8s.kuboard.cn/name: kuboard
+    spec:
+      containers:
+        - name: kuboard
+          image: eipwork/kuboard:latest
+          imagePullPolicy: Always
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
