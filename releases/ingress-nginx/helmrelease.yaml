@@ -3,12 +3,12 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: kuboard
-  namespace: kube-system
+  namespace: monitor
   annotations:
     fluxcd.io/automated: "true"
 spec:
-  releaseName: kuboard
+  releaseName: ingress-nginx
   chart:
     git: git@github.com:VarroReve/gitops
-    path: charts/kuboard
+    path: charts/ingress-nginx
     ref: master
