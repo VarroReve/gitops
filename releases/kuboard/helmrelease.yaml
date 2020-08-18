@@ -6,7 +6,6 @@ metadata:
   namespace: kube-system
   annotations:
     fluxcd.io/automated: "false"
-    test: "test"
 spec:
   releaseName: kuboard
   chart:
