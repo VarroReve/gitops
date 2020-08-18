@@ -21,7 +21,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: ""
+  name: "kuboard-user"
 
 podAnnotations: {}
 
@@ -39,7 +39,6 @@ securityContext: {}
 service:
   type: NodePort
   port: 80
-  targetPort: 80
   nodePort: 32567
 
 ingress:

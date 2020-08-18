@@ -1,32 +1,49 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kuboard
-  namespace: kube-system
+  name: {{ include "kuboard.fullname" . }}
+  labels:
+    {{- include "kuboard.labels" . | nindent 4 }}
+    k8s.kuboard.cn/layer: monitor
+    k8s.kuboard.cn/name: kuboard
   annotations:
     k8s.kuboard.cn/displayName: kuboard
     k8s.kuboard.cn/ingress: "true"
     k8s.kuboard.cn/service: NodePort
     k8s.kuboard.cn/workload: kuboard
-  labels:
-    k8s.kuboard.cn/layer: monitor
-    k8s.kuboard.cn/name: kuboard
 spec:
-  replicas: 1
+{{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+{{- end }}
   selector:
     matchLabels:
+      {{- include "kuboard.selectorLabels" . | nindent 6 }}
       k8s.kuboard.cn/layer: monitor
       k8s.kuboard.cn/name: kuboard
   template:
     metadata:
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
       labels:
+        {{- include "kuboard.selectorLabels" . | nindent 8 }}
         k8s.kuboard.cn/layer: monitor
         k8s.kuboard.cn/name: kuboard
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "kuboard.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: kuboard
-          image: eipwork/kuboard:latest
-          imagePullPolicy: Always
-      tolerations:
-        - key: node-role.kubernetes.io/master
-          effect: NoSchedule
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          tolerations:
+            - key: node-role.kubernetes.io/master
+              effect: NoSchedule

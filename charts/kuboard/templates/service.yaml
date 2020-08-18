@@ -1,16 +1,18 @@
----
 apiVersion: v1
 kind: Service
 metadata:
-  name: kuboard
-  namespace: kube-system
+  name: {{ include "kuboard.fullname" . }}
+  labels:
+    {{- include "kuboard.labels" . | nindent 4 }}
 spec:
-  type: NodePort
+  type: {{ .Values.service.type }}
   ports:
-    - name: http
-      port: 80
-      targetPort: 80
-      nodePort: 32567
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+      nodePort: {{ .Values.service.nodePort }}
   selector:
+    {{- include "kuboard.selectorLabels" . | nindent 4 }}
     k8s.kuboard.cn/layer: monitor
     k8s.kuboard.cn/name: kuboard
