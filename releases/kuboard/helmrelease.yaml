@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: kuboard
-  namespace: monitor
+  namespace: kube-system
   annotations:
     fluxcd.io/automated: "false"
     test: "test"
