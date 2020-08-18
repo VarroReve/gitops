@@ -5,7 +5,7 @@ metadata:
   name: kuboard
   namespace: kube-system
   annotations:
-    fluxcd.io/automated: "true"
+    fluxcd.io/automated: "false"
 spec:
   releaseName: ingress-nginx
   chart:
