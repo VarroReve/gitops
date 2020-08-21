@@ -3,7 +3,7 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: cert-manager
-  namespace: service
+  namespace: cert-manager
   annotations:
     fluxcd.io/automated: "false"
 spec:
