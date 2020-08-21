@@ -50,6 +50,7 @@ ingress:
     nginx.org/websocket-services: "kuboard"
     nginx.com/sticky-cookie-services: "serviceName=kuboard srv_id expires=1h path=/"
     kubernetes.io/ingress.class: nginx
+    cert-manager: io/cluster-issuer："letsencrypt-prod"
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: "kuboard.fmootech.cn"
@@ -58,11 +59,10 @@ ingress:
         backend:
           serviceName: kuboard
           servicePort: http
-
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+  tls:
+    - secretName: kuboard-tls
+      hosts:
+        - kuboard.fmootech.cn
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
