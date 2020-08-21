@@ -5,10 +5,14 @@ metadata:
   name: kuboard
   namespace: monitor
   annotations:
-    fluxcd.io/automated: "true"
+    fluxcd.io/automated: "false"
+    filter.fluxcd.io/chart-image: glob:latest
 spec:
   releaseName: kuboard
   chart:
-    git: git@github.com:VarroReve/gitops
+    git: git@github.com:VarroReve/helm-operator-get-started
     path: charts/kuboard
     ref: master
+  values:
+    clusterRoleBinding:
+      namespace: monitor

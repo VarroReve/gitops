@@ -10,4 +10,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: kuboard-user
-    namespace: monitor
+    namespace: {{ .Values.clusterRoleBinding.namespace }}

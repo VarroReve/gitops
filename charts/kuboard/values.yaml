@@ -54,7 +54,7 @@ ingress:
   hosts:
     - host: "kuboard.fmootech.cn"
       paths:
-      - path: /*
+      - path: / # 如果是 NLB 使用 /; 如果是 ALB 使用 /*
         backend:
           serviceName: kuboard
           servicePort: http
@@ -88,3 +88,6 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+clusterRoleBinding:
+  namespace:
