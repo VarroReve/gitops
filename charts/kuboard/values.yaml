@@ -59,10 +59,10 @@ ingress:
         backend:
           serviceName: kuboard
           servicePort: http
-  tls: []
-#    - secretName: kuboard-tls
-#      hosts:
-#        - kuboard.fmootech.cn
+  tls:
+    - secretName: kuboard-tls
+      hosts:
+        - kuboard.fmootech.cn
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
