@@ -5,7 +5,7 @@ metadata:
   name: kuboard
   namespace: monitor
   annotations:
-    fluxcd.io/automated: "true"
+    fluxcd.io/automated: "false"
     filter.fluxcd.io/chart-image: glob:latest
 spec:
   releaseName: kuboard
