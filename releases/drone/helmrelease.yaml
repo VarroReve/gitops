@@ -6,7 +6,7 @@ metadata:
   namespace: devops
   annotations:
     fluxcd.io/automated: "true"
-      filter.fluxcd.io/chart-image: semver:~1.9
+    filter.fluxcd.io/chart-image: semver:~1.9
 spec:
   releaseName: drone
   chart:
