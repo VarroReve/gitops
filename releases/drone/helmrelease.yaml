@@ -19,6 +19,7 @@ spec:
       DRONE_SERVER_PROTO: https
       DRONE_GITHUB_CLIENT_ID: 6e27d9e99b28d7ec9086
       DRONE_GITHUB_CLIENT_SECRET: 8c19b0b0e39df2f4afca7f4b207bc96afe36d7b3
+      DRONE_RPC_SECRET: 8d7ec90e2c27d9e9
     ingress:
       enabled: true
       annotations:
