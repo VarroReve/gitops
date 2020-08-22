@@ -1,0 +1,26 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: blog
+  namespace: prod
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:prod-latest
+spec:
+  releaseName: blog
+  chart:
+    git: git@github.com:VarroReve/gitops
+    path: charts/blog
+    ref: master
+  values:
+    image:
+      tag: prod-latest
+    ingress:
+      hosts:
+        - host: blog-prod.fmootech.cn
+          paths: ["/"]
+      tls:
+        - secretName: blog-prod-tls
+          hosts:
+            - blog-prod.fmootech.cn

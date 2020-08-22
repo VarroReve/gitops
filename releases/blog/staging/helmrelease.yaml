@@ -1,0 +1,26 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: blog
+  namespace: staging
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:staging-latest
+spec:
+  releaseName: blog
+  chart:
+    git: git@github.com:VarroReve/gitops
+    path: charts/blog
+    ref: master
+  values:
+    image:
+      tag: staging-latest
+    ingress:
+      hosts:
+        - host: blog-staging.fmootech.cn
+          paths: ["/"]
+      tls:
+        - secretName: blog-staging-tls
+          hosts:
+            - blog-staging.fmootech.cn
