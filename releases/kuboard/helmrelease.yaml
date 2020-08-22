@@ -6,11 +6,11 @@ metadata:
   namespace: monitor
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: latest
+    filter.fluxcd.io/chart-image: glob:latest
 spec:
   releaseName: kuboard
   chart:
-    git: git@github.com:VarroReve/helm-operator-get-started
+    git: git@github.com:VarroReve/gitops
     path: charts/kuboard
     ref: master
   values:
