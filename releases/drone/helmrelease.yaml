@@ -13,7 +13,7 @@ spec:
     repository: https://charts.drone.io
     name: drone
     version: 0.1.7
-  value:
+  values:
     env:
       DRONE_SERVER_HOST: drone.fmootech.cn
       DRONE_SERVER_PROTO: https
