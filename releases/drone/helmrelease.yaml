@@ -14,13 +14,7 @@ spec:
     version: 0.1.7
   value:
     env:
-      ## REQUIRED: Set the user-visible Drone hostname, sans protocol.
-      ## Ref: https://docs.drone.io/installation/reference/drone-server-host/
-      ##
-      DRONE_SERVER_HOST: "drone.fmootech.cn"
-      ## The protocol to pair with the value in DRONE_SERVER_HOST (http or https).
-      ## Ref: https://docs.drone.io/installation/reference/drone-server-proto/
-      ##
+      DRONE_SERVER_HOST: drone.fmootech.cn
       DRONE_SERVER_PROTO: https
       DRONE_GITHUB_CLIENT_ID: 6e27d9e99b28d7ec9086
       DRONE_GITHUB_CLIENT_SECRET: 8c19b0b0e39df2f4afca7f4b207bc96afe36d7b3
