@@ -15,7 +15,7 @@ spec:
   values:
     env:
       DRONE_RPC_SECRET: 8d7ec90e2c27d9e9
-        DRONE_NAMESPACE_DEFAULT: devops
+      DRONE_NAMESPACE_DEFAULT: devops
     rbac:
       buildNamespaces:
         - devops
