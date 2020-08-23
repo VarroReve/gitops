@@ -6,7 +6,7 @@ metadata:
   namespace: staging
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:staging-latest
+    filter.fluxcd.io/chart-image: glob:staging-*
 spec:
   releaseName: blog
   chart:
