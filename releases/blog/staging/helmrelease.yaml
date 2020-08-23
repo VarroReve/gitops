@@ -16,7 +16,7 @@ spec:
   values:
     image:
       repository: sakyavarro/blog
-      tag: staging-996214bd
+      tag: staging-4d9a5111
     ingress:
       hosts:
       - host: blog-staging.fmootech.cn
