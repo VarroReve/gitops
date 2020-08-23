@@ -15,7 +15,7 @@ spec:
     ref: master
   values:
     image:
-      tag: staging-latest
+      tag: staging-d440a8a5
     ingress:
       hosts:
         - host: blog-staging.fmootech.cn
