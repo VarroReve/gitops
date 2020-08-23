@@ -15,7 +15,7 @@ spec:
     ref: master
   values:
     image:
-      tag: 1.0.0
+      tag: prod-4d9a5111
     ingress:
       hosts:
         - host: blog-prod.fmootech.cn
