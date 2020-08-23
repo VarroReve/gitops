@@ -16,12 +16,12 @@ spec:
   values:
     image:
       repository: sakyavarro/blog
-      tag: staging-d440a8a5
+      tag: staging-d72963d5
     ingress:
       hosts:
-        - host: blog-staging.fmootech.cn
-          paths: ["/"]
+      - host: blog-staging.fmootech.cn
+        paths: ["/"]
       tls:
-        - secretName: blog-staging-tls
-          hosts:
-            - blog-staging.fmootech.cn
+      - secretName: blog-staging-tls
+        hosts:
+        - blog-staging.fmootech.cn
