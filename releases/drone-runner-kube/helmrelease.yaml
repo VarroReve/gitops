@@ -5,7 +5,7 @@ metadata:
   name: drone-runner-kube
   namespace: devops
   annotations:
-    fluxcd.io/automated: "true"
+    fluxcd.io/automated: "false"
 spec:
   releaseName: drone-runner-kube
   chart:
