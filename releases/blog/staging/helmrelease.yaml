@@ -15,6 +15,7 @@ spec:
     ref: master
   values:
     image:
+      repository: sakyavarro/blog
       tag: staging-d440a8a5
     ingress:
       hosts:
