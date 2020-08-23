@@ -3,10 +3,10 @@ apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
   name: blog
-  namespace: prod
+  namespace: varro
   annotations:
     fluxcd.io/automated: "true"
-    filter.fluxcd.io/chart-image: glob:prod-latest
+    filter.fluxcd.io/chart-image: semver:~1
 spec:
   releaseName: blog
   chart:
@@ -15,12 +15,12 @@ spec:
     ref: master
   values:
     image:
-      tag: prod-latest
+      tag: 1.0.0
     ingress:
       hosts:
-        - host: blog-prod.fmootech.cn
+        - host: www.varroreve.com
           paths: ["/"]
       tls:
-        - secretName: blog-prod-tls
+        - secretName: blog-varro-tls
           hosts:
-            - blog-prod.fmootech.cn
+            - www.varroreve.com
