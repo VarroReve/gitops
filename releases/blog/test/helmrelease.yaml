@@ -1,0 +1,27 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: blog
+  namespace: test
+  annotations:
+    fluxcd.io/automated: "true"
+    filter.fluxcd.io/chart-image: glob:test-latest
+spec:
+  releaseName: blog
+  chart:
+    git: git@github.com:VarroReve/gitops
+    path: charts/blog
+    ref: master
+  values:
+    image:
+      repository: sakyavarro/blog
+      tag: test-latest
+    ingress:
+      hosts:
+      - host: blog-test.fmootech.cn
+        paths: ["/"]
+      tls:
+      - secretName: blog-test-tls
+        hosts:
+        - blog-test.fmootech.cn
