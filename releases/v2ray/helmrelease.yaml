@@ -1,0 +1,14 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: v2ray
+  namespace: service
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: v2ray
+  chart:
+    git: git@github.com:VarroReve/gitops
+    path: charts/v2ray
+    ref: master
